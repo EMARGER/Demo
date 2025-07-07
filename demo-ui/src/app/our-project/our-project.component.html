@@ -1,0 +1,18 @@
+<div class="projects-container">
+  <div class="projects-header">
+    <h2 class="section-title">Our Projects</h2>  <p class="section-subtitle">We know what buyers are looking for and suggest projects that will bring clients top dollar for the sale of their homes.</p> </div>
+
+  <div class="projects-grid">
+    <div class="project-card" *ngFor="let project of projects">
+      <div class="image-container">
+        <img [src]="project.image" [alt]="project.title" />
+        <div class="sold-overlay" *ngIf="project.isSold">SOLD</div>
+      </div>
+      <div class="card-content">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.brief }}</p>
+        <button class="read-more-btn" (click)="onReadMore(project)">READ MORE</button>
+      </div>
+    </div>
+  </div>
+</div>
