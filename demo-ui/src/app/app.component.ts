@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { OurProjectComponent } from './our-project/our-project.component';
-import { HappyClientComponent } from './happy-client/happy-client.component';
-import { BannerComponent } from './banner/banner.component';
-import { RealtorComponent } from './realtor/realtor.component';
+
+import { NavComponent } from '../nav-component/nav.component';
+import { BannerComponent } from '../banner-component/banner.component';
+import { ProjectComponent } from '../project-component/project.component';
+import { ClientComponent } from '../client-component/client.component';
+import { FooterComponent } from '../footer-component/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavbarComponent,OurProjectComponent,HappyClientComponent ,BannerComponent,RealtorComponent],
+  imports: [
+    RouterOutlet,
+    NavComponent,
+    BannerComponent,
+    ProjectComponent,
+    ClientComponent,
+    FooterComponent
+  ],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

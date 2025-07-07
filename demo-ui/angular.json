@@ -16,13 +16,13 @@
             "outputPath": "dist/demo-ui",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+
+              "src/assets",
+              "src/favicon.ico"
+
             ],
             "styles": [
               "src/styles.css"
@@ -82,10 +82,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.css"
@@ -97,6 +95,8 @@
     }
   },
   "cli": {
-    "analytics": "d988b882-b85a-4005-918f-f4c7d0fd7078"
+
+    "analytics": "6f17eb26-0836-4ce7-9bd2-bac00d9ac065"
+
   }
 }
