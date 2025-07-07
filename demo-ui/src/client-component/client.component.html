@@ -1,0 +1,12 @@
+<section class="testimonial-section">
+  <h2 class="testimonial-title">Happy Clients</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card" *ngFor="let client of clients">
+      <img [src]="client.image" alt="Client" />
+      <p class="testimonial-text">{{ client.feedback }}</p>
+      <h3>{{ client.name }}</h3>
+      <span class="designation">{{ client.designation }}</span>
+    </div>
+  </div>
+</section>
