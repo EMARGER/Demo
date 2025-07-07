@@ -1,0 +1,26 @@
+<div class="testimonials-container">
+  <div class="background-decorations">
+    <div class="blue-dot"></div>
+    <div class="white-circle"></div>
+    <div class="top-right-pattern"></div>
+  </div>
+
+  <div class="testimonials-header">
+    <h2>Happy Clients</h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card" *ngFor="let client of testimonials">
+      <div class="client-avatar">
+        <img [src]="client.avatar" [alt]="client.name" />
+      </div>
+      <div class="client-quote">
+        <p>{{ client.quote }}</p>
+      </div>
+      <div class="client-info">
+        <h4>{{ client.name }}</h4>
+        <span>{{ client.title }}, {{ client.location }}</span>
+      </div>
+    </div>
+  </div>
+</div>

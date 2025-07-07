@@ -1,0 +1,441 @@
+.realtor-section {
+  padding: 80px 0; /* Consistent vertical padding */
+  background-color: #f8faff; /* Light background from the overall page design */
+  position: relative;
+  overflow: hidden; /* Crucial to hide background elements that extend beyond the section */
+  text-align: center; /* Default text alignment, overridden where needed */
+}
+
+/* Background Decorations (Circles, Dots, Patterns) */
+.background-circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Allows clicks on content below */
+  z-index: 0; /* Ensures they are behind the main content */
+}
+
+.circle-large {
+  position: absolute;
+  top: 10%; /* Adjusted from image */
+  left: -20px; /* Slightly off-screen to match subtle appearance */
+  width: 120px; /* Slightly smaller */
+  height: 120px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
+  opacity: 0.8;
+}
+
+.dot-small {
+  position: absolute;
+  top: 15%; /* Adjusted from image */
+  left: 150px; /* Positioning to match */
+  width: 18px; /* Slightly smaller */
+  height: 18px;
+  background-color: #007bff; /* Blue dot */
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.pattern-bg {
+  position: absolute;
+  bottom: 5%; /* Closer to the bottom */
+  left: 5%;
+  width: 100px; /* Slightly larger */
+  height: 100px;
+  /* More refined pattern - using multiple radial gradients for a dot grid feel */
+  background-image: radial-gradient(#dcf2ff 15%, transparent 15%),
+                    radial-gradient(#dcf2ff 15%, transparent 15%);
+  background-position: 0 0, 10px 10px; /* Offset for grid pattern */
+  background-size: 20px 20px; /* Spacing of dots */
+  opacity: 0.6; /* Slightly less opaque */
+}
+
+/* Main Content Layout */
+.realtor-content {
+  display: flex;
+  align-items: center; /* Vertically centers text and image blocks */
+  justify-content: space-between;
+  gap: 50px; /* Space between text and image columns */
+  position: relative; /* Brings content above background decorations */
+  z-index: 1;
+  max-width: 1200px; /* Constrain content width */
+  margin: 0 auto; /* Center content within section */
+  padding: 0 20px; /* Horizontal padding for smaller screens/edge cases */
+}
+
+.realtor-text {
+  flex: 1; /* Allows text block to take available space */
+  text-align: left;
+  padding-right: 30px; /* Space from image block */
+}
+
+.realtor-text h2 {
+  font-size: 2.5em; /* Slightly larger heading as seen in image */
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 700; /* Bolder heading */
+}
+
+.realtor-text p {
+  font-size: 1em;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Realtor Images Layout and Styling */
+.realtor-images {
+  flex: 1; /* Allows image block to take available space */
+  display: flex; /* Use flex for fine-tuning image positions */
+  position: relative; /* Crucial for absolute positioning of child images */
+  justify-content: center; /* Helps center the overall image group */
+  align-items: center; /* Helps align the main image in the center */
+  min-height: 400px; /* Ensure sufficient space for overlapping images */
+}
+
+.circular-image {
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: absolute; /* Allows precise overlapping */
+  background-color: white; /* Fallback for visual consistency */
+  display: flex; /* For centering the image content inside the circle */
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the circle without distortion. Works well for SVGs too. */
+  display: block; /* Removes any default inline spacing */
+}
+
+.main-image {
+  width: 300px;
+  height: 300px;
+  z-index: 3; /* Highest layer */
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%); /* Centered within .realtor-images */
+  border: 8px solid white; /* Prominent white border */
+}
+
+.top-right-image {
+  width: 180px;
+  height: 180px;
+  z-index: 2; /* Middle layer */
+  top: 10px; /* Closer to top */
+  right: 10px; /* Closer to right */
+  transform: translate(25%, -25%); /* Adjust offset for visual appeal, slightly out */
+  border: 5px solid white;
+}
+
+.bottom-right-image {
+  width: 180px;
+  height: 180px;
+  z-index: 1; /* Bottom layer */
+  bottom: 10px; /* Closer to bottom */
+  right:1px; /* Adjust positioning, slightly left from right edge */
+  transform: translate(15%, 15%); /* Adjust offset for visual appeal */
+  border: 5px solid white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+  .realtor-content {
+    flex-direction: column; /* Stack text and image vertically */
+    text-align: center;
+    gap: 40px; /* Adjust gap when stacked */
+  }
+  .realtor-text {
+    padding-right: 0; /* Remove right padding when stacked */
+    margin-bottom: 20px; /* Space below text when stacked */
+    max-width: 80%; /* Constrain text width on tablets */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .realtor-text h2 {
+    font-size: 2em; /* Adjust heading size for smaller screens */
+  }
+
+  .realtor-images {
+    min-height: 300px; /* Reduce min-height for smaller screens */
+    width: 100%; /* Take full width */
+    display: flex; /* Keep flex for now to center the main image */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Maintain position context */
+  }
+
+  /* Reset absolute positioning for smaller screens to prevent complex overlaps */
+  .main-image {
+    position: relative; /* Make it relative to its parent for simpler flow */
+    top: auto;
+    left: auto;
+    transform: none; /* Remove centering transform */
+    width: 250px; /* Smaller size */
+    height: 250px;
+    margin-bottom: 20px; /* Add space if they were to stack */
+  }
+
+  .top-right-image, .bottom-right-image {
+    position: absolute; /* Keep absolute for specific overlaps around main */
+    width: 100px; /* Smaller size */
+    height: 100px;
+    transform: none; /* Remove original transforms */
+    border: 4px solid white; /* Slightly thinner border */
+  }
+
+  .top-right-image {
+    top: 0;
+    right: 0;
+    transform: translate(15px, -15px); /* Custom offset for overlap from main image */
+    z-index: 2;
+  }
+  .bottom-right-image {
+    bottom: 0;
+    left: 0; /* Place bottom-left relative to main image */
+    transform: translate(-15px, 15px); /* Custom offset for overlap from main image */
+    z-index: 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .realtor-section {
+    padding: 60px 0; /* Less padding on very small screens */
+  }
+  .realtor-text h2 {
+    font-size: 1.8em;
+  }
+  .realtor-images {
+    min-height: 250px; /* Even smaller min-height */
+  }
+  .main-image {
+    width: 200px;
+    height: 200px;
+  }
+  .top-right-image, .bottom-right-image {
+    width: 80px;
+    height: 80px;
+  }
+  .top-right-image {
+    transform: translate(10px, -10px);
+  }
+  .bottom-right-image {
+    transform: translate(-10px, 10px);
+  }
+
+  /* Adjust background elements for very small screens */
+  .circle-large {
+    top: 5%;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+  }
+  .dot-small {
+    top: 8%;
+    left: 80px;
+    width: 15px;
+    height: 15px;
+  }
+  .pattern-bg {
+    bottom: 2%;
+    left: 2%;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.why-choose-us-section {
+  padding: 80px 0;
+  background-color: #fff; /* White background */
+  text-align: center;
+  position: relative;
+}
+
+.section-heading {
+  font-size: 2.2em;
+  color: #007bff;
+  margin-bottom: 50px;
+  font-weight: 600;
+}
+
+.reason-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.reason-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border-bottom: 4px solid transparent; /* For accent */
+}
+
+.reason-card:hover {
+  transform: translateY(-5px);
+  border-bottom-color: #007bff; /* Accent color on hover */
+}
+
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+  background-color: #e0f2ff; /* Light blue background for icon */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  font-size: 2.2em;
+  color: #007bff;
+}
+
+.reason-card h3 {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.reason-card p {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Media Queries for Why Choose Us */
+@media (max-width: 768px) {
+  .reason-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Media Queries for Realtor Section */
+.gallery-section {
+  background-color: #f9fbfd;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.gallery-item {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item.large {
+  width: 300px;
+  height: 250px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.corner-shape {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+}
+
+.top-left {
+  top: -10px;
+  left: -10px;
+  border-top: 4px solid;
+  border-left: 4px solid;
+}
+
+.top-right {
+  top: -10px;
+  right: -10px;
+  border-top: 4px solid;
+  border-right: 4px solid;
+}
+
+.bottom-left {
+  bottom: -10px;
+  left: -10px;
+  border-bottom: 4px solid;
+  border-left: 4px solid;
+}
+
+.bottom-right {
+  bottom: -10px;
+  right: -10px;
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+}
+
+.orange {
+  border-color: #ff6600;
+}
+
+.blue {
+  border-color: #007bff;
+}
+
+.light-blue-bg {
+  background-color: rgba(0, 123, 255, 0.05);
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50%;
+}
+
+
+.about-us-section {
+  padding: 80px 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.2em;
+  color: #007bff;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.about-us-section p {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Media Queries for About Us */
+@media (max-width: 768px) {
+  .about-us-section p {
+    font-size: 0.9em;
+    padding: 0 15px;
+  }
+}
