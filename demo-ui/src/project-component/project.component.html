@@ -8,8 +8,8 @@
 
     <div class="project-grid">
       <div class="project-card" *ngFor="let project of projects">
-        <img [src]="project.image" alt="Project" />
-        <h3>{{ project.title }}</h3>
+        <img [src]="'http://localhost:1002/demo-api-local/project/' + project.img " alt="image">
+        <h3>{{ project.name }}</h3>
         <p>Project Name • Location</p>
         <button>READ MORE</button>
       </div>
