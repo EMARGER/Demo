@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { NavComponent } from '../nav-component/nav.component';
 import { ProjectComponent } from '../project-component/project.component';
 import { ClientComponent } from '../client-component/client.component';
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
      HttpClientModule,
      FormsModule
   ],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
